@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>Zstd.Binaries</id>
+    <version>1.5.0</version>
+    <authors>Kamron Batman</authors>
+    <owners>Kamron Batman</owners>
+    <license type="expression">MIT</license>
+    <projectUrl>https://github.com/modernuo/zstd</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Zstd Binaries</description>
+    <copyright>Copyright 2021</copyright>
+  </metadata>
+</package>

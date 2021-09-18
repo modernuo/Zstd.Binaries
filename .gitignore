@@ -1,0 +1,11 @@
+/obj
+/bin
+
+*.log
+*.user
+/.idea
+/.vs
+/.vscode
+/zstd-src
+
+.DS_Store
