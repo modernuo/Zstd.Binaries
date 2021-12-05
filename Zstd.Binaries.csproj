@@ -5,8 +5,8 @@
     <TargetFramework>net6.0</TargetFramework>
     <Platforms>x64</Platforms>
     <PlatformTarget>x64</PlatformTarget>
-    <AssemblyVersion>1.1.0</AssemblyVersion>
-    <PackageVersion>1.1.0</PackageVersion>
+    <AssemblyVersion>1.2.0</AssemblyVersion>
+    <PackageVersion>1.2.0</PackageVersion>
     <RootNamespace>System.IO.Compression</RootNamespace>
     <AssemblyName>Zstd.Binaries</AssemblyName>
     <IsPackable>true</IsPackable>
@@ -53,6 +53,11 @@
     <Content Include="runtimes\debian.10-x64\native\zstd">
       <Pack>true</Pack>
       <PackagePath>runtimes/debian.10-x64/native</PackagePath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="runtimes\debian.11-x64\native\zstd">
+      <Pack>true</Pack>
+      <PackagePath>runtimes/debian.11-x64/native</PackagePath>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="runtimes\centos.7-x64\native\zstd">
