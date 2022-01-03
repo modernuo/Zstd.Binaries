@@ -1,3 +1,9 @@
+FROM ubuntu:14.04 as ubuntu-14
+RUN apt-get update && apt-get install -y gcc make
+COPY ./zstd-src ./zstd
+WORKDIR /zstd
+RUN make
+
 FROM ubuntu:16.04 as ubuntu-16
 RUN apt-get update && apt-get install -y gcc make
 COPY ./zstd-src ./zstd
@@ -65,6 +71,7 @@ WORKDIR /zstd
 RUN make
 
 FROM alpine:latest
+RUN mkdir -p ./runtimes/ubuntu.14.04-x64/native
 RUN mkdir -p ./runtimes/ubuntu.16.04-x64/native
 RUN mkdir -p ./runtimes/ubuntu.18.04-x64/native
 RUN mkdir -p ./runtimes/ubuntu.20.04-x64/native
@@ -80,6 +87,11 @@ RUN mkdir -p ./runtimes/fedora.32-x64/native
 RUN mkdir -p ./runtimes/fedora.33-x64/native
 RUN mkdir -p ./runtimes/fedora.34-x64/native
 
+RUN mkdir -p ./runtimes/linuxmint.17-x64/native
+RUN mkdir -p ./runtimes/linuxmint.18.04-x64/native
+RUN mkdir -p ./runtimes/linuxmint.19.04-x64/native
+
+COPY --from=ubuntu-14 /zstd/zstd ./runtimes/ubuntu.14.04-x64/native/zstd
 COPY --from=ubuntu-16 /zstd/zstd ./runtimes/ubuntu.16.04-x64/native/zstd
 COPY --from=ubuntu-18 /zstd/zstd ./runtimes/ubuntu.18.04-x64/native/zstd
 COPY --from=ubuntu-20 /zstd/zstd ./runtimes/ubuntu.20.04-x64/native/zstd
@@ -94,3 +106,7 @@ COPY --from=centos-8 /zstd/zstd ./runtimes/centos.8-x64/native/zstd
 COPY --from=fedora-32 /zstd/zstd ./runtimes/fedora.32-x64/native/zstd
 COPY --from=fedora-33 /zstd/zstd ./runtimes/fedora.33-x64/native/zstd
 COPY --from=fedora-34 /zstd/zstd ./runtimes/fedora.34-x64/native/zstd
+
+COPY --from=ubuntu-14 /zstd/zstd ./runtimes/linuxmint.17-x64/native/zstd
+COPY --from=ubuntu-16 /zstd/zstd ./runtimes/linuxmint.18-x64/native/zstd
+COPY --from=ubuntu-18 /zstd/zstd ./runtimes/linuxmint.19-x64/native/zstd
