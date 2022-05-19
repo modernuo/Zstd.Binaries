@@ -116,7 +116,4 @@
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </Content>
     </ItemGroup>
-    <ItemGroup>
-      <Folder Include="zstd-src-osx\programs\obj" />
-    </ItemGroup>
 </Project>
