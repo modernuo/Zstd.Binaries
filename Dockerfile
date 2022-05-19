@@ -70,6 +70,18 @@ COPY ./zstd-src ./zstd
 WORKDIR /zstd
 RUN make
 
+FROM fedora:35 as fedora-35
+RUN dnf upgrade -y && dnf install -y gcc make
+COPY ./zstd-src ./zstd
+WORKDIR /zstd
+RUN make
+
+FROM fedora:36 as fedora-36
+RUN dnf upgrade -y && dnf install -y gcc make
+COPY ./zstd-src ./zstd
+WORKDIR /zstd
+RUN make
+
 FROM alpine:latest
 RUN mkdir -p ./runtimes/ubuntu.14.04-x64/native
 RUN mkdir -p ./runtimes/ubuntu.16.04-x64/native
@@ -86,6 +98,8 @@ RUN mkdir -p ./runtimes/centos.8-x64/native
 RUN mkdir -p ./runtimes/fedora.32-x64/native
 RUN mkdir -p ./runtimes/fedora.33-x64/native
 RUN mkdir -p ./runtimes/fedora.34-x64/native
+RUN mkdir -p ./runtimes/fedora.35-x64/native
+RUN mkdir -p ./runtimes/fedora.36-x64/native
 
 RUN mkdir -p ./runtimes/linuxmint.17-x64/native
 RUN mkdir -p ./runtimes/linuxmint.18.04-x64/native
@@ -106,6 +120,8 @@ COPY --from=centos-8 /zstd/zstd ./runtimes/centos.8-x64/native/zstd
 COPY --from=fedora-32 /zstd/zstd ./runtimes/fedora.32-x64/native/zstd
 COPY --from=fedora-33 /zstd/zstd ./runtimes/fedora.33-x64/native/zstd
 COPY --from=fedora-34 /zstd/zstd ./runtimes/fedora.34-x64/native/zstd
+COPY --from=fedora-35 /zstd/zstd ./runtimes/fedora.35-x64/native/zstd
+COPY --from=fedora-36 /zstd/zstd ./runtimes/fedora.36-x64/native/zstd
 
 COPY --from=ubuntu-14 /zstd/zstd ./runtimes/linuxmint.17-x64/native/zstd
 COPY --from=ubuntu-16 /zstd/zstd ./runtimes/linuxmint.18-x64/native/zstd
