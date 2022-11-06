@@ -8,7 +8,7 @@
         <RootNamespace>System.IO.Compression</RootNamespace>
         <AssemblyName>Zstd.Binaries</AssemblyName>
         <IsPackable>true</IsPackable>
-        <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
         <Configurations>Debug;Release;Analyze</Configurations>
         <NoWarn>NU1603</NoWarn>
@@ -21,12 +21,12 @@
         <Description>Zstd bindings for .NET 7</Description>
     </PropertyGroup>
     <ItemGroup>
-        <Content Include="runtimes\win-x64\native">
+        <Content Include="runtimes\win-x64\native\zstd.exe">
             <Pack>true</Pack>
             <PackagePath>runtimes/win-x64/native</PackagePath>
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </Content>
-        <Content Include="runtimes\osx-x64\native">
+        <Content Include="runtimes\osx-x64\native\zstd">
             <Pack>true</Pack>
             <PackagePath>runtimes/osx-x64/native</PackagePath>
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
