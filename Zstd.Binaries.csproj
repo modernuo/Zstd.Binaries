@@ -1,23 +1,24 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <Authors>Kamron Batman</Authors>
-        <Copyright>2022</Copyright>
-        <TargetFramework>net6.0</TargetFramework>
-        <Platforms>x64</Platforms>
-        <PlatformTarget>x64</PlatformTarget>
-        <AssemblyVersion>1.4.0</AssemblyVersion>
-        <PackageVersion>1.4.0</PackageVersion>
+        <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
+        <Platforms>x64;arm64</Platforms>
+        <AssemblyVersion>1.5.0</AssemblyVersion>
+        <PackageVersion>1.5.0</PackageVersion>
         <RootNamespace>System.IO.Compression</RootNamespace>
         <AssemblyName>Zstd.Binaries</AssemblyName>
         <IsPackable>true</IsPackable>
-        <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
         <Configurations>Debug;Release;Analyze</Configurations>
-        <DefineConstants Condition="$(RuntimeIdentifier.StartsWith('win'))">WINDOWS</DefineConstants>
-        <DefineConstants Condition="$(RuntimeIdentifier.StartsWith(`win`)) != true">UNIX</DefineConstants>
         <NoWarn>NU1603</NoWarn>
         <RuntimeIdentifiers>win-x64;linux-x64;osx-x64</RuntimeIdentifiers>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <Copyright>Copyright 2022</Copyright>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+        <PackageProjectUrl>https://github.com/modernuo/Argon2.Bindings</PackageProjectUrl>
+        <Description>Zstd bindings for .NET 7</Description>
     </PropertyGroup>
     <ItemGroup>
         <Content Include="runtimes\win-x64\native\zstd.exe">
@@ -30,90 +31,14 @@
             <PackagePath>runtimes/osx-x64/native</PackagePath>
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </Content>
-        <Content Include="runtimes\ubuntu.14.04-x64\native\zstd">
-            <Pack>true</Pack>
-            <PackagePath>runtimes/ubuntu.14.04-x64/native</PackagePath>
-            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        </Content>
-        <Content Include="runtimes\ubuntu.16.04-x64\native\zstd">
-            <Pack>true</Pack>
-            <PackagePath>runtimes/ubuntu.16.04-x64/native</PackagePath>
-            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        </Content>
-        <Content Include="runtimes\ubuntu.18.04-x64\native\zstd">
-            <Pack>true</Pack>
-            <PackagePath>runtimes/ubuntu.18.04-x64/native</PackagePath>
-            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        </Content>
-        <Content Include="runtimes\ubuntu.20.04-x64\native\zstd">
-            <Pack>true</Pack>
-            <PackagePath>runtimes/ubuntu.20.04-x64/native</PackagePath>
-            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        </Content>
-        <Content Include="runtimes\debian.9-x64\native\zstd">
-            <Pack>true</Pack>
-            <PackagePath>runtimes/debian.9-x64/native</PackagePath>
-            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        </Content>
-        <Content Include="runtimes\debian.10-x64\native\zstd">
-            <Pack>true</Pack>
-            <PackagePath>runtimes/debian.10-x64/native</PackagePath>
-            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        </Content>
-        <Content Include="runtimes\debian.11-x64\native\zstd">
-            <Pack>true</Pack>
-            <PackagePath>runtimes/debian.11-x64/native</PackagePath>
-            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        </Content>
-        <Content Include="runtimes\centos.7-x64\native\zstd">
-            <Pack>true</Pack>
-            <PackagePath>runtimes/centos.7-x64/native</PackagePath>
-            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        </Content>
-        <Content Include="runtimes\centos.8-x64\native\zstd">
-            <Pack>true</Pack>
-            <PackagePath>runtimes/centos.8-x64/native</PackagePath>
-            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        </Content>
-        <Content Include="runtimes\fedora.32-x64\native\zstd">
-            <Pack>true</Pack>
-            <PackagePath>runtimes/fedora.32-x64/native</PackagePath>
-            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        </Content>
-        <Content Include="runtimes\fedora.33-x64\native\zstd">
-            <Pack>true</Pack>
-            <PackagePath>runtimes/fedora.33-x64/native</PackagePath>
-            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        </Content>
-        <Content Include="runtimes\fedora.34-x64\native\zstd">
-            <Pack>true</Pack>
-            <PackagePath>runtimes/fedora.34-x64/native</PackagePath>
-            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        </Content>
-        <Content Include="runtimes\fedora.35-x64\native\zstd">
-            <Pack>true</Pack>
-            <PackagePath>runtimes/fedora.35-x64/native</PackagePath>
-            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        </Content>
-        <Content Include="runtimes\fedora.36-x64\native\zstd">
-            <Pack>true</Pack>
-            <PackagePath>runtimes/fedora.36-x64/native</PackagePath>
-            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        </Content>
-        <Content Include="runtimes\linuxmint.17-x64\native\zstd">
-            <Pack>true</Pack>
-            <PackagePath>runtimes/linuxmint.17-x64/native</PackagePath>
-            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        </Content>
-        <Content Include="runtimes\linuxmint.18-x64\native\zstd">
-            <Pack>true</Pack>
-            <PackagePath>runtimes/linuxmint.18-x64/native</PackagePath>
-            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        </Content>
-        <Content Include="runtimes\linuxmint.19-x64\native\zstd">
-            <Pack>true</Pack>
-            <PackagePath>runtimes/linuxmint.19-x64/native</PackagePath>
-            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        </Content>
+    </ItemGroup>
+    <ItemGroup>
+      <Compile Remove="zstd-src\**" />
+    </ItemGroup>
+    <ItemGroup>
+      <EmbeddedResource Remove="zstd-src\**" />
+    </ItemGroup>
+    <ItemGroup>
+      <None Remove="zstd-src\**" />
     </ItemGroup>
 </Project>
