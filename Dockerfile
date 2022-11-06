@@ -46,7 +46,13 @@ COPY ./zstd-src ./zstd
 WORKDIR /zstd
 RUN make
 
-FROM centos:8 as centos-8
+FROM quay.io/centos/centos:stream8 as centos-8
+RUN yum update -y && yum install -y gcc make
+COPY ./zstd-src ./zstd
+WORKDIR /zstd
+RUN make
+
+FROM quay.io/centos/centos:stream9 as centos-9
 RUN yum update -y && yum install -y gcc make
 COPY ./zstd-src ./zstd
 WORKDIR /zstd
@@ -116,6 +122,7 @@ COPY --from=debian-11 /zstd/zstd ./runtimes/debian.11-x64/native/zstd
 
 COPY --from=centos-7 /zstd/zstd ./runtimes/centos.7-x64/native/zstd
 COPY --from=centos-8 /zstd/zstd ./runtimes/centos.8-x64/native/zstd
+COPY --from=centos-9 /zstd/zstd ./runtimes/centos.9-x64/native/zstd
 
 COPY --from=fedora-32 /zstd/zstd ./runtimes/fedora.32-x64/native/zstd
 COPY --from=fedora-33 /zstd/zstd ./runtimes/fedora.33-x64/native/zstd
